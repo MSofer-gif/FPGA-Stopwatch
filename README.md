@@ -72,7 +72,12 @@ Here is the system running on the Digilent Basys 3 board:
 ### 🎥 Video Demo
 [Click here to watch the full hardware demonstration](https://youtu.be/A6s4nlWiTE4)
 ---
+## 📄 Full Project Documentation
+For an in-depth technical breakdown of the architecture, module-level explanations, and complete simulation waveforms, please refer to the full project report:
 
+[📄 View / Download the Full Project Report](FPGA_Stopwatch_Full_Report.pdf)
+
+---
 ## 🛠️ Tools & Technologies
 * **Language:** Verilog (RTL Design & Testbenches)
 * **EDA Tool:** Xilinx Vivado
