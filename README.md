@@ -14,19 +14,20 @@ This project goes beyond simple counting, featuring a robust Finite State Machin
 * **Timing Closure:** Successfully met all rigorous timing constraints at 100MHz with a Worst Negative Slack (WNS) of 2.922 ns.
 
 ---
-
 ## 🏗️ System Architecture 
-
-### Control Logic & State Machine
-The core control unit was designed using a robust Finite State Machine (FSM) to manage user inputs and system states (Counting, Paused, Split).
-
-![FSM Design Sketch](fsm_design_sketch.jpg)
 
 The system is orchestrated by a Top Module integrating the following components:
 1. **Inputs Processing:** Five physical buttons routed through dedicated Debouncers and Edge Detectors.
 2. **Control Unit (FSM):** A Mealy state machine managing transitions.
 3. **Data Path:** A synchronous BCD counter feeding both the live display and the Data Stash memory.
 4. **Display Driver:** Evaluates current FSM state to multiplex between live counting and stashed memory.
+
+### Control Logic & State Machine
+The core control unit was designed using a robust Finite State Machine (FSM) to manage user inputs and system states (Counting, Paused, Split). 
+
+*Below is the initial hand-drawn blueprint mapping the FSM state transitions and hardware control logic:*
+
+![FSM Design Sketch](fsm_design_sketch.jpeg)
 
 ### RTL & Synthesis Schematics
 Below are the elaborated RTL schematic and the post-synthesis physical mapping generated via Vivado:
@@ -48,7 +49,7 @@ The design is highly efficient, utilizing less than 2% of the available LUTs and
 
 **Static Timing Analysis (STA):**
 The design successfully met all rigorous timing constraints for a 100MHz master clock, achieving a positive Worst Negative Slack (WNS) of 2.922 ns.
-![Timing Summary](sta_result.jpg)
+![Timing Summary](sta_result.png)
 
 
 ---
