@@ -17,13 +17,39 @@ This project goes beyond simple counting, featuring a robust Finite State Machin
 
 ## 🏗️ System Architecture 
 
-![System Architecture](שם_קובץ_השרטוט_שלך.jpg)
+### Control Logic & State Machine
+The core control unit was designed using a robust Finite State Machine (FSM) to manage user inputs and system states (Counting, Paused, Split).
+
+![FSM Design Sketch](fsm_design_sketch.jpg)
 
 The system is orchestrated by a Top Module integrating the following components:
-1. **Inputs Processing:** Five physical buttons routed through dedicated Debouncers and Edge Detectors for clean, single-cycle pulses.
-2. **Control Unit (FSM):** A Mealy state machine managing transitions between `IDLE`, `COUNTING`, `PAUSED`, and `SPLIT` modes.
+1. **Inputs Processing:** Five physical buttons routed through dedicated Debouncers and Edge Detectors.
+2. **Control Unit (FSM):** A Mealy state machine managing transitions.
 3. **Data Path:** A synchronous BCD counter feeding both the live display and the Data Stash memory.
-4. **Display Driver:** Evaluates current FSM state to multiplex between live counting and stashed memory display.
+4. **Display Driver:** Evaluates current FSM state to multiplex between live counting and stashed memory.
+
+### RTL & Synthesis Schematics
+Below are the elaborated RTL schematic and the post-synthesis physical mapping generated via Vivado:
+
+**Elaborated RTL Schematic:**
+![RTL Schematic](Schematic_design.PNG)
+
+**Synthesized Design:**
+![Synthesis Schematic](Synthesis_schematic.PNG)
+
+---
+
+## 📊 Implementation & Timing Results
+To ensure robust performance, the design was fully synthesized, implemented, and optimized for the Artix-7 FPGA. 
+
+**Project Summary & Resource Utilization:**
+The design is highly efficient, utilizing less than 2% of the available LUTs and Flip-Flops.
+![Implementation Summary](impl_result_.PNG)
+
+**Static Timing Analysis (STA):**
+The design successfully met all rigorous timing constraints for a 100MHz master clock, achieving a positive Worst Negative Slack (WNS) of 2.922 ns.
+![Timing Summary](sta_result.jpg)
+
 
 ---
 
@@ -31,8 +57,19 @@ The system is orchestrated by a Top Module integrating the following components:
 
 Here is the system running on the Digilent Basys 3 board:
 
-![Running Counter](שם_קובץ_תמונת_הלוח_שלך.jpg)
+![counter_state](counter_led.jpeg)
+![stash_state](stash_led.jpeg)
+![paused](Paused.jpeg)
+![sample](sample1.jpeg)
+![toggle_stash1](togg_sample.jpeg)
+![toggle_stash2](togg_sample2.jpeg)
+![toggle_stash3](togg_sample3.jpeg)
+![toggle_stash4](togg_sample4.jpeg)
 
+
+---
+### 🎥 Video Demo
+[Click here to watch the full hardware demonstration](https://youtu.be/A6s4nlWiTE4)
 ---
 
 ## 🛠️ Tools & Technologies
